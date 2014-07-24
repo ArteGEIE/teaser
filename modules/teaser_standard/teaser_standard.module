@@ -1,0 +1,204 @@
+<?php
+/**
+ * @file
+ * Code for the Teaser Standard feature.
+ */
+
+include_once 'teaser_standard.features.inc';
+
+/**
+ * Implements hook_teaser_types().
+ */
+function teaser_standard_teaser_types() {
+  return array(
+    'teaser' => 1,
+  );
+}
+
+
+/**
+ * Implements hook_field_widget_info().
+ *
+ * Create a custom widget to select a Teaser section. We use the text field as the backend
+ */
+function teaser_standard_field_widget_info() {
+  return array(
+    'teaser_standard_section' => array(
+      'label' => t('Teaser sections'),
+      'field types' => array('text'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_widget_form().
+ */
+function teaser_standard_field_widget_form(&$form, &$form_state, $field, $instance, $langcode, $items, $delta, $element) {
+  $value = isset($items[$delta]['value']) ? $items[$delta]['value'] : '';
+  $options = teaser_standard_section_options();
+
+  $widget = $element;
+  $widget['#delta'] = $delta;
+
+  switch ($instance['widget']['type']) {
+    case 'teaser_standard_section':
+      $widget += array(
+        '#type' => 'select',
+        '#default_value' => $value,
+        '#options' => $options,
+      );
+      break;
+  }
+
+
+
+  $element['value'] = $widget;
+  return $element;
+}
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function teaser_standard_field_formatter_info() {
+  return array(
+    'teaser_standard_timeline' => array(
+      'label' => t('Teaser section icon'),
+      'field types' => array('text'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function teaser_standard_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $element = array();
+
+  $options = teaser_standard_section_options();
+
+  switch ($display['type']) {
+    case 'teaser_standard_timeline':
+      foreach ($items as $delta => $item) {
+        $element[$delta] = array(
+          '#theme' => 'teaser_icon',
+          '#icon' => $item['value'],
+        );
+      }
+      break;
+  }
+
+  return $element;
+}
+
+/**
+ * Implements hook_ds_fields_info().
+ */
+function teaser_standard_ds_fields_info($entity_type) {
+  $fields = array();
+
+  $fields['teaser_standard_video'] = array(
+    'field_type' => DS_FIELD_TYPE_FUNCTION,
+    'function' => 'teaser_standard_field_video',
+    'ui_limit' => array('teaser|*'),
+    'title' => t('Image or Video'),
+  );
+
+  return array('node' => $fields);
+}
+
+/**
+ * DS Field callback
+ *
+ * @param  [type] $field [description]
+ * @return [type]        [description]
+ */
+function teaser_standard_field_video($field) {
+  $node = $field['entity'];
+  $video = field_get_items('node', $node, 'field_teaser_video');
+  if(isset($video[0]['sid'])) {
+    // We have a video, try to render it
+    return scald_render($video[0]['sid'], 'apios_video_representation');
+  } else {
+    // No video, render the image
+    $image = field_get_items('node', $node, 'field_teaser_image');
+    if (isset($image[0]['sid'])) {
+      return scald_render($image[0]['sid'], 'thumbnail_xlarge');
+    }
+  }
+}
+
+/**
+ * Returns a list of possible teaser section options.
+ */
+function teaser_standard_section_options() {
+  return array(
+    '' => '-- None --',
+    'boutique' => 'Arte Boutique',
+    'cinema' => 'Arte Cinema',
+    'concert' => 'Arte Concert',
+    'creative' => 'Arte Creative',
+    'direct' => 'Arte Direct',
+    'edition' => 'Arte Edition',
+    'future' => 'Arte Future',
+    'info' => 'Arte Info',
+    'live' => 'Arte Live',
+    'tv-programm' => 'Arte TV Programm',
+    'vod-dvd' => 'Arte VOD-DVD',
+    'play' => 'Video',
+    'camera' => 'Photo',
+    'article' => 'Article',
+    'link' => 'External URL',
+
+  );
+}
+
+/**
+ * Implement hook_theme().
+ */
+function teaser_standard_theme() {
+  return array(
+    'teaser_icon' => array(
+      'variables' => array(
+        'icon' => NULL,
+      ),
+    ),
+  );
+}
+
+/**
+ * Theme function for a single icon format.
+ */
+function theme_teaser_icon($vars) {
+  return '<span class="icon icon-' . $vars['icon'] . '" aria-hidden="true"></span>';
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function teaser_standard_preprocess_node(&$variables, $hook) {
+  if ($variables['type'] == 'teaser') {
+    //check if image is empty
+    if (empty($variables['field_teaser_image'])) {
+      $variables['classes_array'][] = 'no-image';
+    }
+    //check if there is an image
+    if (!empty($variables['field_teaser_image'])) {
+      $variables['classes_array'][] = 'has-image';
+    }
+    //check if video is empty
+    if (!empty($variables['field_teaser_video'])) {
+      $variables['classes_array'][] = 'has-video';
+    }
+    // check if there is a link to use on wrapper
+    if (empty($variables['field_teaser_link'])) {
+      $variables['classes_array'][] = 'no-wrapper-link';
+    }
+
+    // Add the external link here so it can be used in the tpl
+    $node = node_load($variables['nid']);
+    $link = field_get_items('node', $node, 'field_teaser_link');
+    if (isset($link['0']['url'])) {
+      $variables['wrapper_link'] = $link['0']['url'];
+    }
+  }
+}

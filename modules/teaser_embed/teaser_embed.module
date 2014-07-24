@@ -1,0 +1,16 @@
+<?php
+/**
+ * @file
+ * Code for the Teaser Embed feature.
+ */
+
+include_once 'teaser_embed.features.inc';
+
+/**
+ * Implements hook_teaser_types().
+ */
+function teaser_embed_teaser_types() {
+  return array(
+    'teaser_embed' => 1,
+  );
+}

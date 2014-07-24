@@ -1,0 +1,17 @@
+name = Teaser
+description = Core teaser feature providing base functionality for all teaser types
+core = 7.x
+package = Teaser
+dependencies[] = ctools
+dependencies[] = strongarm
+features[ctools][] = ds:ds:1
+features[ctools][] = strongarm:strongarm:1
+features[ds_view_modes][] = teaser_basic
+features[ds_view_modes][] = teaser_featured
+features[ds_view_modes][] = teaser_featured_extra
+features[ds_view_modes][] = teaser_medium
+features[ds_view_modes][] = teaser_small
+features[ds_view_modes][] = teaser_tiny
+features[features_api][] = api:2
+features_exclude[dependencies][ds] = ds
+files[] = migrate/teaser_demo.inc

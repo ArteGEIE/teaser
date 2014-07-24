@@ -1,4 +1,5 @@
-ARTE-DrupalTeaser
-=================
+General-purpose teaser feature that manages
 
-Drupal : teaser's related stuff
+- display mode per node (via DS)
+- disable full node page
+- other useful teaser options

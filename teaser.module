@@ -1,0 +1,111 @@
+<?php
+
+include_once 'teaser.features.inc';
+
+define('TEASER_FALLBACK_LANGUAGE', 'fr');
+
+/**
+ * Get a list of types declared as teasers, keyed by teaser content type name.
+ * @return [type] [description]
+ */
+function teaser_get_types() {
+  $teaser_types = &drupal_static(__FUNCTION__);
+
+  if (empty($teaser_types)) {
+    $teaser_types = module_invoke_all('teaser_types');
+  }
+
+  return $teaser_types;
+}
+
+/**
+ * Get a list of types declared as teasers
+ * @return [type] [description]
+ */
+function teaser_get_types_list() {
+  return array_keys(teaser_get_types());
+}
+
+/**
+ * Determine if a bundle is a teaser type.
+ */
+function teaser_is_teaser($bundle = NULL) {
+  return in_array($bundle, teaser_get_types_list());
+}
+
+/**
+ * Implements hook_node_view().
+ *
+ * Disable full page views for teaser nodes.
+ */
+function teaser_node_view($node, $view_mode, $langcode) {
+  if (in_array($node->type, teaser_get_types_list()) && $view_mode == 'full' && !user_access('create ' . $node->type . ' content')) {
+    drupal_not_found();
+    exit();
+  }
+}
+
+/*
+ * Implementation of hook_form_node_form_alter()
+ */
+function teaser_form_node_form_alter(&$form, $form_state) {
+  // Alter only edit forms of teaser type nodes
+  if (isset($form['#node_edit_form']) && $form['#node_edit_form'] === TRUE && teaser_is_teaser($form['#bundle'])) {
+    // Add an after_build function, so that we can alter i18n settings (executed in an after build)
+    $form['#after_build'][] = 'teaser_node_form_after_build';
+  }
+}
+
+/**
+ * After build function
+ */
+function teaser_node_form_after_build($form, $form_state) {
+  global $language;
+
+  // When adding new teaser nodes, set default language to the current language
+  if ($form['#node_edit_form'] && teaser_is_teaser($form['type']['#value']) && !isset($form['nid']['#value'])) {
+    $language_to_set = (in_array($language->language, array('fr', 'de'))) ? $language->language : TEASER_FALLBACK_LANGUAGE;
+    $form['language']['#default_value'] = $language_to_set;
+    $form['language']['#value'] = $language_to_set;
+
+    // Remove Undefined and English from available languages
+    unset($form['language']['#options'][LANGUAGE_NONE]);
+    unset($form['language']['#options']['en']);
+  }
+
+  return $form;
+}
+
+/**
+ * Implementation of hook_node_view_alter
+ */
+function teaser_node_view_alter(&$build) {
+  // Create preview page, showing all active and rendered view modes of teaser content types.
+  // Only apply on full view mode.
+  if (isset($build['#bundle']) && teaser_is_teaser($build['#bundle']) && ($build['#view_mode'] == 'full')) {
+    // Save build in temp variable
+    $build_tmp = $build;
+    // Clear build mode, so that we can rebuild it
+    $build = array();
+
+    // Get available view modes for this entity type bundle
+    $entity_info = entity_get_info($build_tmp['#entity_type']);
+    $view_modes = $entity_info['view modes'];
+    $view_mode_settings = field_view_mode_settings($build_tmp['#entity_type'], $build_tmp['#bundle']);
+
+    // Loop through the view modes
+    foreach ($view_modes as $view_mode_name => $view_mode_info) {
+      if (!empty($view_mode_settings[$view_mode_name]['custom_settings']) && $view_mode_name != 'teaser_basic') { // teaser_basic is not a stand alone view mode, so skip
+        $build_add = node_view($build_tmp['#node'], $view_mode_name);
+        $build_add['#view_mode'] = $view_mode_name;
+        $build_add['#prefix'] = '<div class="view-mode-list-item view-mode-list-item-' . $view_mode_name . '"><span class="title">' . $view_mode_info['label'] . '</span>';
+        $build_add['#suffix'] = '</div>';
+        // Add it to build mode array
+        $build[] = $build_add;
+      }
+    }
+  }
+}
+
+
+

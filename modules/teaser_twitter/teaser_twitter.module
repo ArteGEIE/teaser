@@ -1,0 +1,60 @@
+<?php
+/**
+ * @file
+ * Code for the Teaser Twitter feature.
+ */
+
+include_once 'teaser_twitter.features.inc';
+
+/**
+ * Implements hook_teaser_types().
+ */
+function teaser_twitter_teaser_types() {
+  return array(
+    'teaser_twitter' => 1,
+  );
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function teaser_twitter_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $element = array();
+
+  switch ($display['type']) {
+    case 'teaser_twitter_timeline':
+      foreach ($items as $delta => $item) {
+        $element[$delta] = array(
+          '#markup' => teaser_twitter_timeline_render($item['value'], t('Loading twitter timeline...')),
+        );
+      }
+
+      // Add the JavaScript from Twitter.
+      $element['#attached']['js'][] = drupal_get_path('module', 'teaser_twitter') . '/teaser_twitter.field.js';
+      break;
+  }
+
+  return $element;
+}
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function teaser_twitter_field_formatter_info() {
+  return array(
+    'teaser_twitter_timeline' => array(
+      'label' => t('Twitter timeline'),
+      'field types' => array('text'),
+    ),
+  );
+}
+
+/**
+ * Render a twitter timeline widget.
+ */
+function teaser_twitter_timeline_render($widget_id, $placeholder_text) {
+  $output = '<a class="twitter-timeline" data-widget-id="' . check_plain($widget_id) . '">' . check_plain($placeholder_text) . '</a>';
+  return $output;
+}
+
+
