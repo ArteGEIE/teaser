@@ -33,8 +33,8 @@ class TeaserStandardDemoMigration extends TeaserDemoMigration {
       ->sourceMigration('ImageTeaserStandardDemo');
 
     // Video atoms, also previously migrated
-    $this->addFieldMapping('field_teaser_video', 'video')
-      ->sourceMigration('ScaldApios');
+    // $this->addFieldMapping('field_teaser_video', 'video')
+    //   ->sourceMigration('ScaldApios');
 
     $this->addFieldMapping('field_teaser_subtitle', 'subtitle');
     $this->addFieldMapping('field_teaser_section', 'section');
