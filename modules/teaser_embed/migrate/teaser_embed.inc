@@ -28,8 +28,8 @@ class TeaserEmbedDemoMigration extends TeaserDemoMigration {
 
     $this->addFieldMapping('title', 'title');
 
-    $this->addFieldMapping('body', 'body');
-    $this->addFieldMapping('body:format')->defaultValue('full_html');
+    $this->addFieldMapping('field_teaser_body', 'body');
+    $this->addFieldMapping('field_teaser_body:format')->defaultValue('filtered_html');
 
     // Author, default to admin
     $this->addFieldMapping('uid')->defaultValue(1);
