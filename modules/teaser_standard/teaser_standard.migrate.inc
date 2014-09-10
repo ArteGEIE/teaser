@@ -12,6 +12,7 @@ function teaser_standard_migrate_api() {
         'group_name' => 'teaser_demo',
         'dependencies' => array(
           'ImageTeaserStandardDemo',
+          'ScaldOPATest',
         ),
       ),
       'ImageTeaserStandardDemo' => array(
