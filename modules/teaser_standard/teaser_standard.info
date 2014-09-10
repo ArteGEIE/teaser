@@ -12,6 +12,7 @@ dependencies[] = smart_trim
 dependencies[] = strongarm
 dependencies[] = text
 dependencies[] = title
+dependencies[] = scald_opa_migrate
 features[ctools][] = ds:ds:1
 features[ctools][] = strongarm:strongarm:1
 features[ds_field_settings][] = node|teaser|teaser
