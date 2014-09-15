@@ -1,7 +1,6 @@
 name = Teaser Embed
 core = 7.x
 package = Teaser
-dependencies[] = cine_fields
 dependencies[] = ctools
 dependencies[] = features
 dependencies[] = strongarm

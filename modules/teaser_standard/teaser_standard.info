@@ -2,7 +2,6 @@ name = Teaser Standard
 core = 7.x
 package = Teaser
 dependencies[] = atom_reference
-dependencies[] = cine_fields
 dependencies[] = ctools
 dependencies[] = ds
 dependencies[] = entityreference
