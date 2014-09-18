@@ -10,8 +10,8 @@
 function teaser_embed_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-teaser_embed-body'
-  $field_instances['node-teaser_embed-body'] = array(
+  // Exported field_instance: 'node-teaser_embed-field_teaser_body'
+  $field_instances['node-teaser_embed-field_teaser_body'] = array(
     'bundle' => 'teaser_embed',
     'default_value' => NULL,
     'deleted' => 0,
@@ -22,7 +22,7 @@ function teaser_embed_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 0,
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -35,7 +35,7 @@ function teaser_embed_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'body',
+    'field_name' => 'field_teaser_body',
     'label' => 'Body',
     'required' => 1,
     'settings' => array(

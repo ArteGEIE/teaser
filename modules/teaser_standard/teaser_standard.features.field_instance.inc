@@ -10,8 +10,8 @@
 function teaser_standard_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-teaser-body'
-  $field_instances['node-teaser-body'] = array(
+  // Exported field_instance: 'node-teaser-field_teaser_body'
+  $field_instances['node-teaser-field_teaser_body'] = array(
     'bundle' => 'teaser',
     'default_value' => NULL,
     'deleted' => 0,
@@ -22,41 +22,41 @@ function teaser_standard_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 5,
+        'weight' => 17,
       ),
       'teaser' => array(
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 15,
+        'weight' => 0,
       ),
       'teaser_basic' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 0,
       ),
       'teaser_featured' => array(
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 14,
+        'weight' => 0,
       ),
       'teaser_medium' => array(
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 15,
+        'weight' => 0,
       ),
       'teaser_small' => array(
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 15,
+        'weight' => 0,
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'body',
+    'field_name' => 'field_teaser_body',
     'label' => 'Body',
     'required' => 0,
     'settings' => array(
@@ -77,7 +77,7 @@ function teaser_standard_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 
