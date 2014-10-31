@@ -32,7 +32,6 @@ features[field_base][] = field_teaser_link
 features[field_base][] = field_teaser_section
 features[field_base][] = field_teaser_subtitle
 features[field_base][] = field_teaser_video
-features[field_instance][] = node-teaser-field_teaser_body
 features[field_instance][] = node-teaser-field_teaser_descshort
 features[field_instance][] = node-teaser-field_teaser_icon
 features[field_instance][] = node-teaser-field_teaser_image
