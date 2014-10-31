@@ -133,22 +133,22 @@ function teaser_standard_field_video($field) {
 function teaser_standard_section_options() {
   return array(
     '' => '-- None --',
-    'boutique' => 'Arte Boutique',
+    'vod-dvd' => 'Arte Boutique',
     'cinema' => 'Arte Cinema',
     'concert' => 'Arte Concert',
     'creative' => 'Arte Creative',
     'direct' => 'Arte Direct',
-    'edition' => 'Arte Edition',
+    'vod-dvd' => 'Arte Edition',
     'future' => 'Arte Future',
     'info' => 'Arte Info',
-    'live' => 'Arte Live',
+    'direct' => 'Arte Live',
     'tv-programm' => 'Arte TV Programm',
     'vod-dvd' => 'Arte VOD-DVD',
     'play' => 'Video',
     'camera' => 'Photo',
     'article' => 'Article',
     'link' => 'External URL',
-
+    'folder' => 'List (folder)',
   );
 }
 
@@ -177,15 +177,10 @@ function theme_teaser_icon($vars) {
  */
 function teaser_standard_preprocess_node(&$variables, $hook) {
   if ($variables['type'] == 'teaser') {
-    //check if image is empty
-    if (empty($variables['field_teaser_image'])) {
-      $variables['classes_array'][] = 'no-image';
-    }
-    //check if there is an image
-    if (!empty($variables['field_teaser_image'])) {
-      $variables['classes_array'][] = 'has-image';
-    }
-    //check if video is empty
+    //check if we have a thumbnail and add the corresponding class
+    $variables['classes_array'][] = (empty($variables['field_teaser_image'])) ? 'no-image' : 'has-image';
+    
+    //check if there is a video
     if (!empty($variables['field_teaser_video'])) {
       $variables['classes_array'][] = 'has-video';
     }
@@ -194,11 +189,28 @@ function teaser_standard_preprocess_node(&$variables, $hook) {
       $variables['classes_array'][] = 'no-wrapper-link';
     }
 
-    // Add the external link here so it can be used in the tpl
+    // Add the external link here so it can be used in the tpl as a wrapper link
     $node = node_load($variables['nid']);
     $link = field_get_items('node', $node, 'field_teaser_link');
     if (isset($link['0']['url'])) {
       $variables['wrapper_link'] = $link['0']['url'];
+    }
+    
+    // Auxiliary classes for view-mode-teaser_small
+    if ($variables['view_mode'] == 'teaser_small') {
+
+      // Grab the necessary fields
+      $teaser_section = field_get_items('node', $variables['node'],'field_teaser_section');
+      $teaser_icon = field_get_items('node', $variables['node'],'field_teaser_icon');
+
+      // Add class if it's empty
+      if (empty($teaser_section)) {
+        $variables['classes_array'][] = 'no-section';
+      }
+      if (empty($teaser_icon)) {
+        $variables['classes_array'][] = 'no-icon';
+      }
+      
     }
   }
 }
