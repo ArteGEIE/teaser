@@ -73,16 +73,7 @@ function teaser_standard_strongarm() {
         'custom_settings' => TRUE,
       ),
       'teaser_basic' => array(
-        'custom_settings' => FALSE,
-      ),
-      'list_teaser' => array(
-        'custom_settings' => FALSE,
-      ),
-      'list_teaser_large' => array(
-        'custom_settings' => FALSE,
-      ),
-      'list_teaser_small' => array(
-        'custom_settings' => FALSE,
+        'custom_settings' => TRUE,
       ),
     ),
     'extra_fields' => array(

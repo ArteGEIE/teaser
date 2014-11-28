@@ -206,7 +206,7 @@ function teaser_standard_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'atom_reference',
         'settings' => array(),
-        'type' => 'title',
+        'type' => 'thumbnail_xlarge',
         'weight' => 2,
       ),
       'teaser' => array(
