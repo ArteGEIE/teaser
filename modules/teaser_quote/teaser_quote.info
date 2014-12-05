@@ -11,6 +11,7 @@ dependencies[] = title
 features[ctools][] = ds:ds:1
 features[ctools][] = strongarm:strongarm:1
 features[ds_field_settings][] = node|teaser_quote|teaser
+features[ds_field_settings][] = node|teaser_quote|teaser_featured
 features[ds_field_settings][] = node|teaser_quote|teaser_medium
 features[ds_field_settings][] = node|teaser_quote|teaser_small
 features[ds_layout_settings][] = node|teaser_quote|teaser

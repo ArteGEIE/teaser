@@ -32,6 +32,21 @@ function teaser_quote_ds_field_settings_info() {
 
   $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|teaser_quote|teaser_featured';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'teaser_quote';
+  $ds_fieldsetting->view_mode = 'teaser_featured';
+  $ds_fieldsetting->settings = array(
+    'title' => array(
+      'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+  );
+  $export['node|teaser_quote|teaser_featured'] = $ds_fieldsetting;
+
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
   $ds_fieldsetting->id = 'node|teaser_quote|teaser_medium';
   $ds_fieldsetting->entity_type = 'node';
   $ds_fieldsetting->bundle = 'teaser_quote';
