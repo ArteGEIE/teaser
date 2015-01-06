@@ -265,7 +265,9 @@ function teaser_standard_field_default_field_instances() {
     'widget' => array(
       'active' => 0,
       'module' => 'atom_reference',
-      'settings' => array(),
+      'settings' => array(
+        'context' => 'sdl_editor_representation',
+      ),
       'type' => 'atom_reference_textfield',
       'weight' => 5,
     ),
@@ -327,6 +329,7 @@ function teaser_standard_field_default_field_instances() {
     'label' => 'External Link',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -590,7 +593,9 @@ function teaser_standard_field_default_field_instances() {
     'widget' => array(
       'active' => 0,
       'module' => 'atom_reference',
-      'settings' => array(),
+      'settings' => array(
+        'context' => 'sdl_editor_representation',
+      ),
       'type' => 'atom_reference_textfield',
       'weight' => 6,
     ),
