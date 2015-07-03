@@ -69,9 +69,6 @@ function teaser_standard_strongarm() {
       'revision' => array(
         'custom_settings' => FALSE,
       ),
-      'teaser_tiny' => array(
-        'custom_settings' => TRUE,
-      ),
       'teaser_basic' => array(
         'custom_settings' => TRUE,
       ),
