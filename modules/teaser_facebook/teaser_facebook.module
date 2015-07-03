@@ -40,6 +40,7 @@ function teaser_facebook_field_formatter_view($entity_type, $entity, $field, $in
           '#markup' => teaser_facebook_likebox_render($item['value']),
         );
       }
+      $element['#attached']['js'][] = drupal_get_path('module', 'teaser_facebook') . '/teaser_facebook.field.js';
       break;
   }
 
@@ -48,20 +49,12 @@ function teaser_facebook_field_formatter_view($entity_type, $entity, $field, $in
 
 /**
  * Render a facebook likebox widget.
+ *
+ * @todo Dynamic height, which currently not supported by Facebook.
  */
 function teaser_facebook_likebox_render($page) {
-  $output = theme('fb_likebox_facebook', array(
-    'fb_url' => 'https://www.facebook.com/' . $page,
-    'fb_colorscheme' => variable_get('fb_likebox_colorscheme', 'light'),
-    'fb_header' => variable_get('fb_likebox_header', 'false'),
-    'fb_stream' => variable_get('fb_likebox_stream', 'true'),
-    'fb_show_faces' => variable_get('fb_likebox_show_faces', 'false'),
-    'fb_scrolling' => variable_get('fb_likebox_scrolling', 'yes'),
-    'fb_width' => variable_get('fb_likebox_width', '100'),
-    'fb_width_units' => variable_get('fb_likebox_width_units', '%'),
-    'fb_height' => variable_get('fb_likebox_height', '224'),
-    'fb_show_border' => variable_get('fb_likebox_show_border', 'false'),
-    'fb_force_wall' => variable_get('fb_likebox_force_wall', 'false'),
-  ));
-  return $output;
+  $url = 'https://www.facebook.com/' . $page;
+  return <<<EOF
+<div class="fb-page" data-href="$url" data-width="500" data-height="449" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false" data-show-posts="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="$url"><a href="$url">Facebook</a></blockquote></div></div>
+EOF;
 }
