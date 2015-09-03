@@ -203,15 +203,13 @@ function teaser_standard_ds_layout_settings_info() {
       'secondary' => array(
         1 => 'field_teaser_section',
         2 => 'title',
-        3 => 'field_teaser_icon',
-        4 => 'field_teaser_descshort',
+        3 => 'field_teaser_descshort',
       ),
     ),
     'fields' => array(
       'teaser_standard_video' => 'primary',
       'field_teaser_section' => 'secondary',
       'title' => 'secondary',
-      'field_teaser_icon' => 'secondary',
       'field_teaser_descshort' => 'secondary',
     ),
     'classes' => array(),
