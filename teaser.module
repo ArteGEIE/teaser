@@ -2,8 +2,6 @@
 
 include_once 'teaser.features.inc';
 
-define('TEASER_FALLBACK_LANGUAGE', 'fr');
-
 /**
  * Get a list of types declared as teasers, keyed by teaser content type name.
  * @return [type] [description]
@@ -64,13 +62,12 @@ function teaser_node_form_after_build($form, $form_state) {
 
   // When adding new teaser nodes, set default language to the current language
   if ($form['#node_edit_form'] && teaser_is_teaser($form['type']['#value']) && !isset($form['nid']['#value'])) {
-    $language_to_set = (in_array($language->language, array('fr', 'de'))) ? $language->language : TEASER_FALLBACK_LANGUAGE;
+    $language_to_set = $language->language;
     $form['language']['#default_value'] = $language_to_set;
     $form['language']['#value'] = $language_to_set;
 
-    // Remove Undefined and English from available languages
+    // Remove Undefined from available languages
     unset($form['language']['#options'][LANGUAGE_NONE]);
-    unset($form['language']['#options']['en']);
   }
 
   return $form;
