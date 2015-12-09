@@ -58,11 +58,14 @@ function teaser_form_node_form_alter(&$form, $form_state) {
  * After build function
  */
 function teaser_node_form_after_build($form, $form_state) {
-  global $language;
-
   // When adding new teaser nodes, set default language to the current language
   if ($form['#node_edit_form'] && teaser_is_teaser($form['type']['#value']) && !isset($form['nid']['#value'])) {
-    $language_to_set = $language->language;
+    if (!empty($GLOBALS['language_url'])) {
+      $language_to_set = $GLOBALS['language_url']->language;
+    }
+    else {
+      $language_to_set = $GLOBALS['language']->language;
+    }
     $form['language']['#default_value'] = $language_to_set;
     $form['language']['#value'] = $language_to_set;
 
