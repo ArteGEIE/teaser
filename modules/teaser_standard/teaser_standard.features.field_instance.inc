@@ -363,7 +363,7 @@ function teaser_standard_field_default_field_instances() {
         'class' => '',
         'configurable_title' => 0,
         'rel' => 'nofollow',
-        'target' => '_blank',
+        'target' => 'user',
         'title' => '',
       ),
       'display' => array(
