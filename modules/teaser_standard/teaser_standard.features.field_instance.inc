@@ -371,11 +371,6 @@ function teaser_standard_field_default_field_instances() {
       ),
       'enable_tokens' => 1,
       'entity_translation_sync' => FALSE,
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 1,
-        'profile' => 'arte_teaser',
-      ),
       'rel_remove' => 'default',
       'title' => 'none',
       'title_label_use_field_label' => FALSE,
