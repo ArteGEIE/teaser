@@ -133,15 +133,15 @@ function teaser_standard_field_video($field) {
 function teaser_standard_section_options() {
   return array(
     '' => '-- None --',
-    'vod-dvd' => 'Arte Boutique',
+    'boutique' => 'Arte Boutique',
     'cinema' => 'Arte Cinema',
     'concert' => 'Arte Concert',
     'creative' => 'Arte Creative',
     'direct' => 'Arte Direct',
-    'vod-dvd' => 'Arte Edition',
+    'edition' => 'Arte Edition',
     'future' => 'Arte Future',
     'info' => 'Arte Info',
-    'direct' => 'Arte Live',
+    'live' => 'Arte Live',
     'tv-programm' => 'Arte TV Programm',
     'vod-dvd' => 'Arte VOD-DVD',
     'play' => 'Video',
@@ -179,7 +179,7 @@ function teaser_standard_preprocess_node(&$variables, $hook) {
   if ($variables['type'] == 'teaser') {
     //check if we have a thumbnail and add the corresponding class
     $variables['classes_array'][] = (empty($variables['field_teaser_image'])) ? 'no-image' : 'has-image';
-    
+
     //check if there is a video
     if (!empty($variables['field_teaser_video'])) {
       $variables['classes_array'][] = 'has-video';
@@ -192,10 +192,12 @@ function teaser_standard_preprocess_node(&$variables, $hook) {
     // Add the external link here so it can be used in the tpl as a wrapper link
     $node = node_load($variables['nid']);
     $link = field_get_items('node', $node, 'field_teaser_link');
-    if (isset($link['0']['url'])) {
+    if (isset($link['0']['original_url'])) {
+      $variables['wrapper_link'] = $link['0']['original_url'];
+    } elseif (isset($link['0']['url'])) {
       $variables['wrapper_link'] = $link['0']['url'];
     }
-    
+
     // Auxiliary classes for view-mode-teaser_small
     if ($variables['view_mode'] == 'teaser_small') {
 
@@ -210,7 +212,7 @@ function teaser_standard_preprocess_node(&$variables, $hook) {
       if (empty($teaser_icon)) {
         $variables['classes_array'][] = 'no-icon';
       }
-      
+
     }
   }
 }

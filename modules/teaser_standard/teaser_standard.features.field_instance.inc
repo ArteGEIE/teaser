@@ -10,7 +10,7 @@
 function teaser_standard_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-teaser-field_teaser_descshort'
+  // Exported field_instance: 'node-teaser-field_teaser_descshort'.
   $field_instances['node-teaser-field_teaser_descshort'] = array(
     'bundle' => 'teaser',
     'default_value' => NULL,
@@ -127,7 +127,7 @@ function teaser_standard_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-teaser-field_teaser_icon'
+  // Exported field_instance: 'node-teaser-field_teaser_icon'.
   $field_instances['node-teaser-field_teaser_icon'] = array(
     'bundle' => 'teaser',
     'default_value' => NULL,
@@ -208,7 +208,7 @@ function teaser_standard_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-teaser-field_teaser_image'
+  // Exported field_instance: 'node-teaser-field_teaser_image'.
   $field_instances['node-teaser-field_teaser_image'] = array(
     'bundle' => 'teaser',
     'default_value' => NULL,
@@ -301,7 +301,7 @@ function teaser_standard_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-teaser-field_teaser_link'
+  // Exported field_instance: 'node-teaser-field_teaser_link'.
   $field_instances['node-teaser-field_teaser_link'] = array(
     'bundle' => 'teaser',
     'default_value' => NULL,
@@ -389,7 +389,7 @@ function teaser_standard_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-teaser-field_teaser_section'
+  // Exported field_instance: 'node-teaser-field_teaser_section'.
   $field_instances['node-teaser-field_teaser_section'] = array(
     'bundle' => 'teaser',
     'default_value' => NULL,
@@ -473,7 +473,7 @@ function teaser_standard_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-teaser-field_teaser_subtitle'
+  // Exported field_instance: 'node-teaser-field_teaser_subtitle'.
   $field_instances['node-teaser-field_teaser_subtitle'] = array(
     'bundle' => 'teaser',
     'default_value' => NULL,
@@ -556,7 +556,7 @@ function teaser_standard_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-teaser-field_teaser_video'
+  // Exported field_instance: 'node-teaser-field_teaser_video'.
   $field_instances['node-teaser-field_teaser_video'] = array(
     'bundle' => 'teaser',
     'default_value' => NULL,
@@ -638,71 +638,7 @@ function teaser_standard_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-teaser-field_xiti_chapters'
-  $field_instances['node-teaser-field_xiti_chapters'] = array(
-    'bundle' => 'teaser',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Enter Xiti chapters one by one, separated by a comma. Please, do not enter all chapters at once.<br/>Format : parent, child, second-child',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'i18n_taxonomy',
-        'settings' => array(),
-        'type' => 'i18n_taxonomy_term_reference_link',
-        'weight' => 17,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser_featured' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser_medium' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser_small' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser_tiny' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_xiti_chapters',
-    'label' => 'Xiti chapters',
-    'required' => FALSE,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'module' => 'taxonomy',
-      'settings' => array(
-        'autocomplete_path' => 'taxonomy/autocomplete',
-        'size' => 60,
-      ),
-      'type' => 'taxonomy_autocomplete',
-      'weight' => 15,
-    ),
-  );
-
-  // Exported field_instance: 'node-teaser-title_field'
+  // Exported field_instance: 'node-teaser-title_field'.
   $field_instances['node-teaser-title_field'] = array(
     'bundle' => 'teaser',
     'default_value' => NULL,
@@ -785,7 +721,6 @@ function teaser_standard_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Enter Xiti chapters one by one, separated by a comma. Please, do not enter all chapters at once.<br/>Format : parent, child, second-child');
   t('External Link');
   t('Icon');
   t('Image');
@@ -794,7 +729,6 @@ function teaser_standard_field_default_field_instances() {
   t('Subtitle');
   t('Title');
   t('Video');
-  t('Xiti chapters');
 
   return $field_instances;
 }

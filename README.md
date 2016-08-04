@@ -1,9 +1,22 @@
-General-purpose teaser feature that manages
+ARTE Teasers
+============
 
-- display mode per node (via DS)
-- disable full node page
-- other useful teaser options
+This module and it's sub-modules goal is to display some "teasers" content anywhere.
+A teaser can be mostly used to display a block linking to a real content, but it may also
+be used to display a facebook widget, or some twitter one...
 
-# TODOs
+Used for now on ASF and Cinema, but may be extended soon to other platforms.
 
-There are some features_exclude for ASF dependencies so that we don't have to clean up files after each features-update. Those dependencies should not be there in the first place, but I don't know how they got in. Ideally, we don't need there features_exclude on ASF (but we need for e.g. title_field etc.).
+## Features
+
+- Display mode per node via Display Suite.
+- Disable full node page.
+- Other useful teaser options.
+
+## TODOs
+
+- Port the module to all platforms needing teasers.
+- Improve the code, allow to customize things easily per platform.
+- Couple to the Info ARTE Grid module to have same display method on all platforms maybe.
+
+And more...

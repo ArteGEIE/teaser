@@ -98,7 +98,7 @@ function teaser_standard_ds_field_settings_info() {
       'format' => 'default',
       'formatter_settings' => array(
         'link' => '0',
-        'wrapper' => 'h2',
+        'wrapper' => 'h3',
         'class' => '',
       ),
     ),
@@ -203,14 +203,18 @@ function teaser_standard_ds_layout_settings_info() {
       'secondary' => array(
         1 => 'field_teaser_section',
         2 => 'title',
-        3 => 'field_teaser_descshort',
+        3 => 'field_teaser_icon',
+        4 => 'field_teaser_descshort',
+        5 => 'field_teaser_subtitle',
       ),
     ),
     'fields' => array(
       'teaser_standard_video' => 'primary',
       'field_teaser_section' => 'secondary',
       'title' => 'secondary',
+      'field_teaser_icon' => 'secondary',
       'field_teaser_descshort' => 'secondary',
+      'field_teaser_subtitle' => 'secondary',
     ),
     'classes' => array(),
     'wrappers' => array(
