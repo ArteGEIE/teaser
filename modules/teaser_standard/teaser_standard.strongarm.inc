@@ -33,27 +33,6 @@ function teaser_standard_strongarm() {
       'teaser' => array(
         'custom_settings' => TRUE,
       ),
-      'full' => array(
-        'custom_settings' => FALSE,
-      ),
-      'rss' => array(
-        'custom_settings' => FALSE,
-      ),
-      'search_index' => array(
-        'custom_settings' => FALSE,
-      ),
-      'search_result' => array(
-        'custom_settings' => FALSE,
-      ),
-      'diff_standard' => array(
-        'custom_settings' => FALSE,
-      ),
-      'token' => array(
-        'custom_settings' => FALSE,
-      ),
-      'navigation' => array(
-        'custom_settings' => FALSE,
-      ),
       'teaser_featured' => array(
         'custom_settings' => TRUE,
       ),
@@ -66,22 +45,13 @@ function teaser_standard_strongarm() {
       'teaser_small' => array(
         'custom_settings' => TRUE,
       ),
-      'revision' => array(
-        'custom_settings' => FALSE,
+      'teaser_small_extra' => array(
+        'custom_settings' => TRUE,
       ),
       'teaser_tiny' => array(
         'custom_settings' => TRUE,
       ),
       'teaser_basic' => array(
-        'custom_settings' => FALSE,
-      ),
-      'list_teaser' => array(
-        'custom_settings' => FALSE,
-      ),
-      'list_teaser_large' => array(
-        'custom_settings' => FALSE,
-      ),
-      'list_teaser_small' => array(
         'custom_settings' => FALSE,
       ),
     ),

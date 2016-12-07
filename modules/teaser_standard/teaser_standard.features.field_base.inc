@@ -10,7 +10,7 @@
 function teaser_standard_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_teaser_descshort'
+  // Exported field_base: 'field_teaser_descshort'.
   $field_bases['field_teaser_descshort'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -31,7 +31,7 @@ function teaser_standard_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_teaser_icon'
+  // Exported field_base: 'field_teaser_icon'.
   $field_bases['field_teaser_icon'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -53,7 +53,7 @@ function teaser_standard_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_teaser_image'
+  // Exported field_base: 'field_teaser_image'.
   $field_bases['field_teaser_image'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -74,16 +74,13 @@ function teaser_standard_field_default_field_bases() {
     'type' => 'atom_reference',
   );
 
-  // Exported field_base: 'field_teaser_link'
+  // Exported field_base: 'field_teaser_link'.
   $field_bases['field_teaser_link'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_teaser_link',
-    'field_permissions' => array(
-      'type' => 0,
-    ),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'link',
@@ -107,7 +104,7 @@ function teaser_standard_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_teaser_section'
+  // Exported field_base: 'field_teaser_section'.
   $field_bases['field_teaser_section'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -129,7 +126,7 @@ function teaser_standard_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_teaser_subtitle'
+  // Exported field_base: 'field_teaser_subtitle'.
   $field_bases['field_teaser_subtitle'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -151,7 +148,7 @@ function teaser_standard_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_teaser_video'
+  // Exported field_base: 'field_teaser_video'.
   $field_bases['field_teaser_video'] = array(
     'active' => 1,
     'cardinality' => 1,

@@ -33,25 +33,10 @@ function teaser_twitter_strongarm() {
       'teaser' => array(
         'custom_settings' => TRUE,
       ),
-      'full' => array(
-        'custom_settings' => FALSE,
+      'teaser_featured' => array(
+        'custom_settings' => TRUE,
       ),
-      'rss' => array(
-        'custom_settings' => FALSE,
-      ),
-      'search_index' => array(
-        'custom_settings' => FALSE,
-      ),
-      'search_result' => array(
-        'custom_settings' => FALSE,
-      ),
-      'diff_standard' => array(
-        'custom_settings' => FALSE,
-      ),
-      'token' => array(
-        'custom_settings' => FALSE,
-      ),
-      'revision' => array(
+      'teaser_featured_extra' => array(
         'custom_settings' => FALSE,
       ),
       'teaser_medium' => array(
@@ -60,13 +45,13 @@ function teaser_twitter_strongarm() {
       'teaser_small' => array(
         'custom_settings' => TRUE,
       ),
-      'navigation' => array(
-        'custom_settings' => FALSE,
+      'teaser_small_extra' => array(
+        'custom_settings' => TRUE,
       ),
-      'teaser_featured' => array(
-        'custom_settings' => FALSE,
+      'teaser_tiny' => array(
+        'custom_settings' => TRUE,
       ),
-      'teaser_featured_extra' => array(
+      'teaser_basic' => array(
         'custom_settings' => FALSE,
       ),
     ),

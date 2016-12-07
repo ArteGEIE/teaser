@@ -101,6 +101,9 @@ class ImageTeaserStandardDemoMigration extends TeaserDemoMigration {
       ->defaultValue(drupal_get_path('module', 'teaser_standard') . '/migrate/import');
     $this->addFieldMapping('scald_thumbnail:destination_dir')->defaultValue('public://atoms/image');
     $this->addFieldMapping('scald_thumbnail:file_replace')->defaultValue(FILE_EXISTS_REPLACE);
+
+    // Language
+    $this->addFieldMapping('language', 'language');
   }
 
   public function prepareRow($row) {
