@@ -12,6 +12,7 @@ class TeaserTwitterDemoMigration extends TeaserDemoMigration {
         'id' => array(
           'type' => 'varchar',
           'length' => 255,
+          'not null' => TRUE,
         ),
       ),
       MigrateDestinationNode::getKeySchema()
